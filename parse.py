@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
 import csv
-import xlrd
 
 import numpy as np
 import pandas as pd
@@ -45,25 +44,9 @@ def rev(seq):
         bases = bases.replace(v,k)
     return bases
 
-def csv_from_excel(wb):
-    """
-    Convert excel file to csv
-    """
-    wb = xlrd.open_workbook(wb)
-    sh = wb.sheet_by_name("HB lab primers")
-    your_csv_file = open("hbprimers.csv", "wb")
-    wr = csv.writer(your_csv_file, quoting=csv.QUOTE_ALL)
-
-    for rownum in np.arange(sh.nrows):
-        wr.writerow(sh.row_values(rownum))
-
-    your_csv_file.close()
-
-path = IPAddress(host) + "/HB lab primers.xls"
-
 primerdict = {} # store each primer sequence with its corresponding primer name in this dictionary
 
-df = pd.read_csv(csv_from_excel(path)) # read in the .csv file as a pandas DataFrame
+df = pd.read_csv(HBlabprimers.csv) # read in the .csv file as a pandas DataFrame
 
 for i in (df.index):
     seq_name = str(df.iloc[i]["Primer name"]) # get the sequence name
