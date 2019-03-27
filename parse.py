@@ -5,8 +5,6 @@ import csv
 import numpy as np
 import pandas as pd
 
-from netaddr import *
-
 """
 Script to store the forward and reverse complement primers from the
 excel sheet.
