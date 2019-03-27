@@ -33,18 +33,18 @@ def rev(seq):
     """
     Find the reverse complement of a DNA string
     """
-    for k,v in alt_map.iteritems():
+    for k,v in alt_map.items():
         seq = seq.replace(k,v)
     bases = list(seq)
     bases = reversed([complement.get(base,base) for base in bases])
     bases = ''.join(bases)
-    for k,v in alt_map.iteritems():
+    for k,v in alt_map.items():
         bases = bases.replace(v,k)
     return bases
 
 primerdict = {} # store each primer sequence with its corresponding primer name in this dictionary
 
-df = pd.read_csv(HBlabprimers.csv) # read in the .csv file as a pandas DataFrame
+df = pd.read_csv("HBlabprimers.csv") # read in the .csv file as a pandas DataFrame
 
 for i in (df.index):
     seq_name = str(df.iloc[i]["Primer name"]) # get the sequence name
